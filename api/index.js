@@ -2,12 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import authRoute from "./routes/auth.js";
 import errorHandler from "./middleware/errorMiddleware.js";
-// import roomsRoute from "./routes/auth.js";
+// import roomsRoute from "./routes/rooms.js";
 import hotelsRoute from "./routes/hotels.js";
-import usersRoute from "./routes/auth.js";
-// import router from "./routes/auth.js";
+import usersRoute from "./routes/users.js";
+
 const app = express();
 dotenv.config();
 app.use(cors());
@@ -22,10 +23,11 @@ const connect = async () => {
 	}
 };
 //middleware
+app.use(cookieParser());
 app.use("/api/auth", authRoute);
 // app.use("/api/rooms", roomsRoute);
 app.use("/api/hotels", hotelsRoute);
-// app.use("/api/users", usersRoute);
+app.use("/api/users", usersRoute);
 app.use(errorHandler);
 
 app.listen(5000, () => {

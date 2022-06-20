@@ -1,4 +1,5 @@
 import Hotel from "../models/Hotel.js";
+import { createError } from "../utils/error.js";
 //post hotel
 export const createHotel = async (req, res, next) => {
 	const newHotel = new Hotel(req.body);
@@ -47,7 +48,7 @@ export const getHotel = async (req, res, next) => {
 	}
 };
 //get all
-export const getAllHotel = async (req, res, next) => {
+export const getAllHotels = async (req, res, next) => {
 	try {
 		const hotels = await Hotel.find();
 		res.status(201);
