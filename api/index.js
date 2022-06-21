@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import authRoute from "./routes/auth.js";
 import errorHandler from "./middleware/errorMiddleware.js";
-// import roomsRoute from "./routes/rooms.js";
+import roomsRoute from "./routes/rooms.js";
 import hotelsRoute from "./routes/hotels.js";
 import usersRoute from "./routes/users.js";
 
@@ -25,7 +25,7 @@ const connect = async () => {
 //middleware
 app.use(cookieParser());
 app.use("/api/auth", authRoute);
-// app.use("/api/rooms", roomsRoute);
+app.use("/api/rooms", roomsRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/users", usersRoute);
 app.use(errorHandler);
